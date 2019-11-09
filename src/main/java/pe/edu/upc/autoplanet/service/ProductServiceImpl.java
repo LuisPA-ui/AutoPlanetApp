@@ -21,6 +21,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	@Transactional
 	public int createProduct(Product product) {
+		
 		int result = productRepository.countByName(product.getName());
 		if(result == 0) {
 			product.setEnteredAt(new Date());
@@ -31,6 +32,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public int updateProduct(Long id, Product product) {
+		
 		int result = 0;
 		Optional<Product> originalProduct = productRepository.findById(id);
 		if(originalProduct.isPresent()) {
@@ -42,18 +44,22 @@ public class ProductServiceImpl implements ProductService{
 			productRepository.save(updatedProduct);
 		}
 		return result;
+		
 	}
 
 	@Override
 	public int deleteProduct(Long id) {
+		
 		Optional<Product> product = productRepository.findById(id);
 		if(!product.isPresent()) {return -1; }
 		productRepository.delete(product.get());
 		return 0;
+		
 	}
 
 	@Override
 	public Collection<Product> getProducts() {
+		
 		return productRepository.findAllByOrderByNameDesc();
 	}
 
