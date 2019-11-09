@@ -14,6 +14,7 @@ public interface SupplierRepository extends JpaRepository<Supplier, Long>{
 	
 	// Número de vendedores con nombre especificado
 	@Query("select count(c.name) from Supplier c where c.name = :name")
+	
 	public int countByName(@Param("name") String supplierName);
 	public List<Supplier> findAllByOrderByNameDesc();
 
