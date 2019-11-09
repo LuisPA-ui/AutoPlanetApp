@@ -1,3 +1,4 @@
+
 package pe.edu.upc.autoplanet.model;
 
 import javax.persistence.Column;
