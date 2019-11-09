@@ -56,6 +56,7 @@ public class SupplierServiceImpl implements SupplierService{
 	@Override
 	@Transactional(readOnly = true)
 	public Collection<Supplier> getSuppliers() {
+		
 		// TODO Auto-generated method stub
 		return supplierRepository.findAllByOrderByNameDesc();
 	}
