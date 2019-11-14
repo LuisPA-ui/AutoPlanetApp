@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Categoria</title>
+<title>Auto</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -51,37 +51,28 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo"
-				aria-expanded="false" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
+				data-target="#collapseTwo" aria-expanded="false"
+				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/categories/list}">Categorías</a>
+						<a class="collapse-item" th:href="@{/clients/list}">Perfil</a>
 					</div>
 				</div>
-				
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
-					</div>
-				</div>
-				
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/suppliers/list}">Proveedores</a>
+						<a class="collapse-item" th:href="@{/cars/list}">Autos</a>
 					</div>
 				</div></li>
+
 
 <!-- 
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				 data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Orden</span>
+				data-target="#collapseTwo" aria-expanded="true"
+				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Orden</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -94,14 +85,13 @@
 
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				 data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Reporte</span>
+				data-target="#collapseTwo" aria-expanded="true"
+				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Citas</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/}">Categor&iacute;as</a>
+						<a class="collapse-item" th:href="@{/}">Servicios</a>
 					</div>
 				</div></li>
 
@@ -109,7 +99,7 @@
 			<hr class="sidebar-divider">
 
 			<!-- Sidebar Toggler (Sidebar) -->
-			
+
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -131,7 +121,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-					
+
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -150,8 +140,10 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img th:src="@{/img/logout.png}" width="30" height="30" alt="logo" align="middle"></img></span> 
-							
+								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
+									th:src="@{/img/logout.png}" width="30" height="30" alt="logo"
+									align="middle"></img></span>
+
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -166,8 +158,8 @@
 									Cerrar sesión
 								</a>
 							</div></li>
-					</ul>
 
+					</ul>
 
 				</nav>
 				<!-- End of Topbar -->
@@ -176,42 +168,94 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Categoría</h1>
+					<h1 class="h3 mb-4 text-gray-800">Auto</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${category}" th:remove="tag">
+					<div th:object="${car}" th:remove="tag">
 						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
 							role="alert">
 							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
 						</ul>
 					</div>
 
-					<form th:action="@{/categories/save}" th:object="${category}"
+					<form th:action="@{/cars/save}" th:object="${car}"
 						method="post">
+						
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Categoría</label>
+							<label for="placa" class="col-sm-2 col-form-label">Placa:
+							</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{name}" class="form-control"
+								<input type="text" th:field="*{placa}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
-									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+									th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}"></small>
 							</div>
 						</div>
-
-
-
+						
+						<div class="form-group row">
+							<label for="price" class="col-sm-2 col-form-label">Modelo:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{model}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="brand" class="col-sm-2 col-form-label">Marca:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{brand}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="color" class="col-sm-2 col-form-label">Color:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{color}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="year" class="col-sm-2 col-form-label">Año:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{year}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="client" class="col-sm-2 col-form-label">Cliente</label>
+							<div class="col-sm-6">
+								<select class="custom-select custom-select-sm"
+									th:field="*{client}">
+									<option th:each="client : ${listClients}"
+										th:value="${client.id}" th:utext="${client.name}" />
+								</select>
+							</div>
+						</div>
+									
 						<div class="form-group row">
 							<div class="col-sm-6">
 								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/categories/list" class="btn btn-danger">Cancelar</a>
+								<a href="/cars/list" class="btn btn-danger">Cancelar</a>
 							</div>
 						</div>
 						<p th:text="${message}" class="form-text text-danger"></p>
 
 					</form>
-
-
-
 
 				</div>
 				<!-- /.container-fluid -->
@@ -258,7 +302,8 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/categories/index}">Cerrar Sesión</a>
+					<a class="btn btn-primary" th:href="@{/cars/index}">Cerrar
+						Sesión</a>
 				</div>
 			</div>
 		</div>

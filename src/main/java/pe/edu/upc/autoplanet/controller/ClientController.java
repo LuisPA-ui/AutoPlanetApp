@@ -12,65 +12,65 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
-import pe.edu.upc.autoplanet.model.Category;
-import pe.edu.upc.autoplanet.service.CategoryService;
+import pe.edu.upc.autoplanet.model.Client;
+import pe.edu.upc.autoplanet.service.ClientService;
 
 @Controller
-@RequestMapping("/categories")
-public class CategoryController {
+@RequestMapping("/clients")
+public class ClientController {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private ClientService clientService;
 	
 	@GetMapping("/new")
-	public String newCategory(Model model) {
-		model.addAttribute("category", new Category());
-		return "category/category";
+	public String newClient(Model model) {
+		model.addAttribute("client", new Client());
+		return "client/client";
 	}
 	
 	@PostMapping("/save")
-	public String saveCategory(
-			@Valid Category category,
+	public String saveClient(
+			@Valid Client client,
 			BindingResult result,
 			Model model,
 			SessionStatus status) throws Exception {
 	
 		if(result.hasErrors()) {
-			return "/category/category";
+			return "/client/client";
 		} else {
-			if(categoryService.createCategory(category) > 0) {
+			if(clientService.createClient(client) > 0) {
 				model.addAttribute("message", "Ya existe.");
 			} else {
 				model.addAttribute("message", "Guardado con éxito.");
 				status.setComplete();
 			}
 		}
-		model.addAttribute("listCategories", categoryService.getCategories());
-		return "/category/listCategories";
+		model.addAttribute("listClients", clientService.getClients());
+		return "/client/listClients";
 	}
 	
 	@GetMapping("/list")
-	public String listCategories(Model model) {
+	public String listClients(Model model) {
 		try {
-			model.addAttribute("category", new Category());
-			model.addAttribute("listCategories", categoryService.getCategories());
+			model.addAttribute("client", new Client());
+			model.addAttribute("listClients", clientService.getClients());
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/category/listCategories";
+		return "/client/listClients";
 	}
 	
 	@RequestMapping("/delete")
-	public String deleteCategory(Model model, @RequestParam("id") Long id) {
+	public String deleteClient(Model model, @RequestParam("id") Long id) {
 		try {
-			categoryService.deleteCategory(id);
+			clientService.deleteClient(id);
 			model.addAttribute("message", "Eliminado exitosamente.");
 
 		} catch(Exception e) {
-			model.addAttribute("message", "La categoría no se puede eliminar.");
+			model.addAttribute("message", "El cliente no se puede eliminar.");
 		}
-		model.addAttribute("listCategories", categoryService.getCategories());
-		return "/category/listCategories";
+		model.addAttribute("listClients", clientService.getClients());
+		return "/client/listClients";
 	}
 
 }

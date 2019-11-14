@@ -9,68 +9,67 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
-import pe.edu.upc.autoplanet.model.Category;
-import pe.edu.upc.autoplanet.service.CategoryService;
+import pe.edu.upc.autoplanet.model.ReserveManagement;
+import pe.edu.upc.autoplanet.service.ReserveManagementService;
 
 @Controller
-@RequestMapping("/categories")
-public class CategoryController {
-	
+@RequestMapping("/ReserveManagement")
+public class ReserveManagementController {
+
 	@Autowired
-	private CategoryService categoryService;
+	private ReserveManagementService ReserveManagentService;
 	
 	@GetMapping("/new")
-	public String newCategory(Model model) {
-		model.addAttribute("category", new Category());
-		return "category/category";
+	public String newReseve(Model model) {
+		model.addAttribute("ReseveManagement", new ReserveManagement());
+		return "ReseveManagement/ReseveManagement";
 	}
 	
 	@PostMapping("/save")
-	public String saveCategory(
-			@Valid Category category,
+	public String saveReserve(
+			@Valid ReserveManagement Reserve,
 			BindingResult result,
 			Model model,
 			SessionStatus status) throws Exception {
 	
 		if(result.hasErrors()) {
-			return "/category/category";
+			return "/reserveManagement/reserveManagement";
 		} else {
-			if(categoryService.createCategory(category) > 0) {
+			if(ReserveManagementService.createReserve(ReserveManagement) > 0) {
 				model.addAttribute("message", "Ya existe.");
 			} else {
 				model.addAttribute("message", "Guardado con éxito.");
 				status.setComplete();
 			}
 		}
-		model.addAttribute("listCategories", categoryService.getCategories());
-		return "/category/listCategories";
+		model.addAttribute("listReseve", ReserveManagementServic.getReserve());
+		return "/client/listClients";
 	}
 	
 	@GetMapping("/list")
-	public String listCategories(Model model) {
+	public String listReseve(Model model) {
 		try {
-			model.addAttribute("category", new Category());
-			model.addAttribute("listCategories", categoryService.getCategories());
+			model.addAttribute("Reseve", new );
+			model.addAttribute("lisReseve", );
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/category/listCategories";
+		return "/client/listClients";
 	}
 	
 	@RequestMapping("/delete")
-	public String deleteCategory(Model model, @RequestParam("id") Long id) {
+	public String deleteClient(Model model, @RequestParam("id") Long id) {
 		try {
-			categoryService.deleteCategory(id);
+			clientService.deleteClient(id);
 			model.addAttribute("message", "Eliminado exitosamente.");
 
 		} catch(Exception e) {
-			model.addAttribute("message", "La categoría no se puede eliminar.");
+			model.addAttribute("message", "El cliente no se puede eliminar.");
 		}
-		model.addAttribute("listCategories", categoryService.getCategories());
-		return "/category/listCategories";
+		model.addAttribute("listClients", clientService.getClients());
+		return "/client/listClients";
 	}
 
 }

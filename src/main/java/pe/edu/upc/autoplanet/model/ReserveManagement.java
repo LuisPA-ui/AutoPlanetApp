@@ -17,8 +17,10 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "citas")
-public class Cita {
+@Table(name="ReserveManagement")
+public class ReserveManagement {
+	
+	
 	
 	public Long getId() {
 		return id;
@@ -44,12 +46,12 @@ public class Cita {
 		this.enteredAt = enteredAt;
 	}
 
-	public Client getClient() {
-		return client;
+	public Cita getCita() {
+		return cita;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setCita(Cita cita) {
+		this.cita = cita;
 	}
 
 	@Id
@@ -66,7 +68,7 @@ public class Cita {
 	private Date enteredAt;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "client_id", nullable = false)
-	private Client client;
-
+	@JoinColumn(name="cita_id",nullable = false)
+	private Cita cita;
+	
 }

@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Categoria</title>
+<title>Cliente</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -58,21 +58,14 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/categories/list}">Categorías</a>
+						<a class="collapse-item" th:href="@{/clients/list}">Perfil</a>
 					</div>
 				</div>
 				
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/products/list}">Productos</a>
-					</div>
-				</div>
-				
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-					data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/suppliers/list}">Proveedores</a>
+						<a class="collapse-item" th:href="@{/cars/list}">Autos</a>
 					</div>
 				</div></li>
 
@@ -96,12 +89,12 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				 data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Reporte</span>
+					class="fas fa-fw fa-cog"></i> <span>Citas</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/}">Categor&iacute;as</a>
+						<a class="collapse-item" th:href="@{/}">Servicios</a>
 					</div>
 				</div></li>
 
@@ -176,25 +169,55 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Categoría</h1>
+					<h1 class="h3 mb-4 text-gray-800">Perfil</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${category}" th:remove="tag">
+					<div th:object="${client}" th:remove="tag">
 						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
 							role="alert">
 							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
 						</ul>
 					</div>
 
-					<form th:action="@{/categories/save}" th:object="${category}"
+					<form th:action="@{/clients/save}" th:object="${client}"
 						method="post">
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Categoría</label>
+							<label for="name" class="col-sm-2 col-form-label">Cliente</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{name}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="dni" class="col-sm-2 col-form-label">DNI</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{dni}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="address" class="col-sm-2 col-form-label">Direccion</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{address}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="phone" class="col-sm-2 col-form-label">Telefono</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{phone}" class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
 							</div>
 						</div>
 
@@ -203,7 +226,7 @@
 						<div class="form-group row">
 							<div class="col-sm-6">
 								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/categories/list" class="btn btn-danger">Cancelar</a>
+								<a href="/clients/list" class="btn btn-danger">Cancelar</a>
 							</div>
 						</div>
 						<p th:text="${message}" class="form-text text-danger"></p>
@@ -258,7 +281,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/categories/index}">Cerrar Sesión</a>
+					<a class="btn btn-primary" th:href="@{/clients/index}">Cerrar Sesión</a>
 				</div>
 			</div>
 		</div>
