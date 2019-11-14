@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Auto</title>
+<title>Cliente</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -47,13 +47,14 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
-
+			
 
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded=true
-				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
+				data-target="#collapseTwo"
+				aria-expanded=true aria-controls="collapseTwo"> <i
+					class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -66,13 +67,14 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/cars/list}">Autos</a>
 					</div>
-				</div>></li>
+				</div></li>
 
 <!-- 
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded="true"
-				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Orden</span>
+				 data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fas fa-fw fa-cog"></i> <span>Orden</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -85,8 +87,9 @@
  -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded="true"
-				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Citas</span>
+				 data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fas fa-fw fa-cog"></i> <span>Citas</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -100,7 +103,7 @@
 			<hr class="sidebar-divider">
 
 			<!-- Sidebar Toggler (Sidebar) -->
-
+			
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -122,7 +125,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-
+					
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -141,9 +144,7 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
-									th:src="@{/img/logout.png}" width="30" height="30" alt="logo"
-									align="middle"></img></span>
+								class="mr-2 d-none d-lg-inline text-gray-600 small"><img th:src="@{/img/logout.png}" width="30" height="30" alt="logo" align="middle"></img></span> 
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -152,8 +153,8 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="categories/index"
-									data-toggle="modal" data-target="#logoutModal"> <i
+								<a class="dropdown-item" href="categories/index" data-toggle="modal"
+									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
 								</a>
@@ -168,9 +169,9 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Autos</h1>
+					<h1 class="h3 mb-4 text-gray-800">Clientes</h1>
 
-					<a th:href="@{/cars/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
+					<a th:href="@{/clients/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
 
@@ -178,25 +179,23 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
-								<th scope="col">Placa</th>
-								<th scope="col">Marca</th>
-								<th scope="col">Color</th>
-								<th scope="col">Modelo</th>
-								<th scope="col">Año</th>
-								<th scope="col">Propietario</th>
-								<th scope="col">Operaci&oacute;n</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">DNI</th>
+								<th scope="col">Direccion</th>
+								<th scope="col">Telefono</th>
+			
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="pro: ${listCars}" th:if="${listCars}">
-								<td th:text="${pro.id}"></td>
-								<td th:text="${pro.placa}"></td>
-								<td th:text="${pro.model}"></td>
-								<td th:text="${pro.brand}"></td>
-								<td th:text="${pro.color}"></td>
-								<td th:text="${pro.year}"></td>						
-								<td th:text="${pro.client.name}" th:if="${pro.client}"></td>
-								<td><a th:href="@{/cars/delete?id=}+${pro.id}"
+							<tr th:each="cate: ${listClients}">
+								<td th:text="${cate.id}"></td>
+								<td th:text="${cate.name}"></td>
+								<td th:text="${cate.dni}"></td>
+								<td th:text="${cate.address}"></td>
+								<td th:text="${cate.phone}"></td>
+								
+								<td><a th:href="@{/clients/delete?id=}+${cate.id}"
 									class="btn btn-secondary">Eliminar</a></td>
 							</tr>
 						</tbody>
@@ -249,8 +248,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/cars/index}">Cerrar
-						sesión</a>
+					<a class="btn btn-primary" th:href="@{/clients/index}">Cerrar sesión</a>
 				</div>
 			</div>
 		</div>

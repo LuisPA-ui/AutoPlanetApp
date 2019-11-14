@@ -76,7 +76,7 @@ public class Car {
 	private Long id;
 	
 	@NotEmpty(message = "La placa no puede estar vacio.")
-	@Column(name = "placa", length = 20, nullable = false)
+	@Column(name = "placa", unique=true, length = 20, nullable = false)
 	private String placa;
 	
 	@NotEmpty(message = "El color no puede estar vacio.")

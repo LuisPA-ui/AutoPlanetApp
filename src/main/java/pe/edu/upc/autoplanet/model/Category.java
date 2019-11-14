@@ -36,5 +36,4 @@ public class Category {
 	@Column(name = "name", unique=true, nullable = false, length = 120)
 	private String name;
 
-	
 }
