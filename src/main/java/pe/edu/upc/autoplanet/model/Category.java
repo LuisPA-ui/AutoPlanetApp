@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "categories")
@@ -33,7 +34,8 @@ public class Category {
 	private Long id;
 	
 	@NotEmpty(message = "El nombre no puede estar vacio.")
-	@Column(name = "name", unique=true, nullable = false, length = 120)
+	@Size(max = 15,message="El nÃºmero de caracteres del campo nombre supera la cantidad permitida, por favor ingrese 15 caracteres como mÃ¡ximo.")
+	@Column(name = "name", unique=true, nullable = false, length = 15)
 	private String name;
 
 }

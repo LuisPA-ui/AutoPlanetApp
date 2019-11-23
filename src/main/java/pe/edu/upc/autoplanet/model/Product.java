@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -26,6 +27,9 @@ public class Product {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	
+
 
 	public String getName() {
 		return name;
@@ -98,6 +102,8 @@ public class Product {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
+
+	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "supplier_id", nullable = false)
