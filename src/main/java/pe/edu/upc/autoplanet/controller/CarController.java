@@ -75,7 +75,7 @@ public class CarController {
 			model.addAttribute("message", "El auto no puede ser eliminado.");
 		}
 		model.addAttribute("listCars", carService.getCars());
-		return "/car/listCar";
+		return "/car/listCars";
 	}
 
 }
